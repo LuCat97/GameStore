@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStore</title>
+    <link rel="stylesheet" href="home.css" />
+    <script src="home.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">🎮</div>
+          <div>
+            <p class="eyebrow">Dashboard personale</p>
+            <h1>GameStore</h1>
+          </div>
+        </div>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Cambia tema"
+          title="Cambia tema"
+        >
+          🌙
+        </button>
+      </header>
+
+      <main class="layout">
+        <section class="panel panel-form">
+          <div class="panel-header">
+            <h2>Aggiungi / Modifica gioco</h2>
+            <p>Compila i campi e salva nella tua collezione.</p>
+          </div>
+
+          <form id="gameForm" class="game-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="gameId">ID gioco</label>
+                <input
+                  type="number"
+                  id="gameId"
+                  name="gameId"
+                  placeholder="ID automatico"
+                  readonly
+                />
+              </div>
+
+              <div class="field">
+                <label for="titolo">Titolo</label>
+                <input
+                  type="text"
+                  id="titolo"
+                  name="titolo"
+                  placeholder="Es. God of War Ragnarök"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="genere">Genere</label>
+                <input
+                  type="text"
+                  id="genere"
+                  name="genere"
+                  placeholder="Es. Action Adventure"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="piattaforma">Piattaforma</label>
+                <input
+                  type="text"
+                  id="piattaforma"
+                  name="piattaforma"
+                  placeholder="Es. PC / PS5"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="stato">Stato</label>
+                <select id="stato" name="stato">
+                  <option value="Da iniziare">Da iniziare</option>
+                  <option value="In corso">In corso</option>
+                  <option value="Completato">Completato</option>
+                  <option value="Abbandonato">Abbandonato</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="oreGiocate">Ore giocate</label>
+                <input
+                  type="number"
+                  id="oreGiocate"
+                  name="oreGiocate"
+                  placeholder="Es. 20"
+                  min="0"
+                  step="1"
+                />
+              </div>
+
+              <div class="field">
+                <label for="voto">Voto</label>
+                <input
+                  type="number"
+                  id="voto"
+                  name="voto"
+                  placeholder="Da 1 a 10"
+                  min="1"
+                  max="10"
+                  step="1"
+                />
+              </div>
+
+              <div class="field">
+                <label for="dataAcquisto">Data acquisto</label>
+                <input type="date" id="dataAcquisto" name="dataAcquisto" />
+              </div>
+
+              <div class="field field-full">
+                <label for="immagine">URL immagine</label>
+                <input
+                  type="url"
+                  id="immagine"
+                  name="immagine"
+                  placeholder="https://..."
+                />
+              </div>
+
+              <div class="field field-full">
+                <label for="note">Note</label>
+                <textarea
+                  id="note"
+                  name="note"
+                  rows="4"
+                  placeholder="Scrivi qui le tue note sul gioco..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="submitButton" class="btn btn-primary" type="submit">
+                Salva gioco
+              </button>
+              <button id="resetButton" class="btn btn-secondary" type="button">
+                Annulla modifica
+              </button>
+            </div>
+
+            <p id="formStatus" class="status-message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel panel-list">
+          <div class="panel-header list-header">
+            <div>
+              <h2>Libreria giochi</h2>
+              <p>Filtra, modifica o elimina i titoli salvati.</p>
+            </div>
+            <button id="refreshButton" class="btn btn-ghost" type="button">
+              Aggiorna
+            </button>
+          </div>
+
+          <div class="filters">
+            <div class="field">
+              <label for="searchTitle">Titolo</label>
+              <input
+                type="text"
+                id="searchTitle"
+                placeholder="Cerca per titolo"
+              />
+            </div>
+
+            <div class="field">
+              <label for="searchGenre">Genere</label>
+              <input
+                type="text"
+                id="searchGenre"
+                placeholder="Cerca per genere"
+              />
+            </div>
+
+            <div class="field">
+              <label for="searchPlatform">Piattaforma</label>
+              <input
+                type="text"
+                id="searchPlatform"
+                placeholder="Cerca per piattaforma"
+              />
+            </div>
+          </div>
+
+          <p id="listStatus" class="status-message" aria-live="polite"></p>
+
+          <div id="gamesContainer" class="cards-grid"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
