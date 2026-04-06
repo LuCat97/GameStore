@@ -330,7 +330,7 @@ try {
 } catch (error) {
   showStatus(
     elements.formStatus,
-    "Operazione fallita. Controlla backend e dati inseriti.",
+    "Operazione fallita. Controlla i dati inseriti.",
     "error"
   );
 } finally {
